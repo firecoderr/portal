@@ -2,19 +2,32 @@ import React from "react";
 
 type InputType = React.ComponentProps<"input">;
 
-const Input = React.memo(({ id, required = true, ...props }: InputType) => {
-  console.log(id);
+const Input = React.memo(
+  ({
+    id,
+    required = true,
+    type = "text",
+    className = "w-fit",
+    placeholder = "",
+    ...props
+  }: InputType) => {
+    console.log(id);
 
-  return (
-    <div className="w-fit">
-      <input
-        {...props}
-        required={required}
-        type="text"
-        className="mx-auto mt-2 block border border-black p-3"
-      />
-    </div>
-  );
-});
+    return (
+      <div className={className}>
+        <input
+          {...props}
+          required={required}
+          type={type}
+          placeholder={placeholder}
+          className={
+            "mt-2 block rounded-md border border-black p-3 focus:border-violet-900 focus:outline-none " +
+            className
+          }
+        />
+      </div>
+    );
+  },
+);
 
 export default Input;

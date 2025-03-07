@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-// Define the form state structure
 export interface FormState {
   firstName: string;
   lastName: string;
@@ -17,10 +16,9 @@ export interface FormState {
   email: string;
   whatsApp: string;
   telegram: string;
-  files: any[]; // Here will be files, can define the file type if needed
+  diploma: File | "";
 }
 
-// Initialize the state with empty values
 const initialState: FormState = {
   firstName: "",
   lastName: "",
@@ -36,12 +34,11 @@ const initialState: FormState = {
   email: "",
   whatsApp: "", // Optional field
   telegram: "", // Optional field
-  files: [],
+  diploma: "",
 };
 
-// Create the form slice
 export const formSlice = createSlice({
-  name: "form", // Change the name from "counter" to "form"
+  name: "form",
   initialState,
   reducers: {
     setFirstName: (state, action: PayloadAction<string>) => {
@@ -86,13 +83,12 @@ export const formSlice = createSlice({
     setTelegram: (state, action: PayloadAction<string>) => {
       state.telegram = action.payload;
     },
-    setFiles: (state, action: PayloadAction<any[]>) => {
-      state.files = action.payload;
+    setFiles: (state, action: PayloadAction<File>) => {
+      state.diploma = action.payload;
     },
   },
 });
 
-// Export action creators for each reducer
 export const {
   setFirstName,
   setLastName,
