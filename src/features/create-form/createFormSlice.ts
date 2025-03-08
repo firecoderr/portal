@@ -1,97 +1,107 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
+export const sendForm = createAsyncThunk(
+  "create-form/sendForm",
+  async function (form, { rejectWithValue }) {},
+);
+
 export interface FormState {
-  firstName: string;
-  lastName: string;
-  fatherName: string;
-  citizenship: string;
-  typeOfAttendence: string;
-  educationalInstitution: string;
-  country: string;
-  city: string;
-  purpose: string;
-  residence: string;
-  phoneNumber: string;
-  email: string;
-  whatsApp: string;
-  telegram: string;
-  files: any[];
+  form: {
+    firstName: string;
+    lastName: string;
+    fatherName: string;
+    citizenship: string;
+    typeOfAttendence: string;
+    educationalInstitution: string;
+    country: string;
+    city: string;
+    purpose: string;
+    residence: string;
+    phoneNumber: string;
+    email: string;
+    whatsApp: string;
+    telegram: string;
+    diploma: File | "";
+  };
+  status: "loading" | "succeed" | "failed" | null;
+  error: string | null;
 }
 
-// Initialize the state with empty values
 const initialState: FormState = {
-  firstName: "",
-  lastName: "",
-  fatherName: "",
-  citizenship: "",
-  typeOfAttendence: "",
-  educationalInstitution: "",
-  country: "",
-  city: "",
-  purpose: "",
-  residence: "",
-  phoneNumber: "",
-  email: "",
-  whatsApp: "", // Optional field
-  telegram: "", // Optional field
-  files: [],
+  form: {
+    firstName: "",
+    lastName: "",
+    fatherName: "",
+    citizenship: "",
+    typeOfAttendence: "",
+    educationalInstitution: "",
+    country: "",
+    city: "",
+    purpose: "",
+    residence: "",
+    phoneNumber: "",
+    email: "",
+    whatsApp: "", // Optional field
+    telegram: "", // Optional field
+    diploma: "",
+  },
+  status: null,
+  error: null,
 };
 
-// Create the form slice
 export const formSlice = createSlice({
-  name: "form", // Change the name from "counter" to "form"
+  name: "create-form",
   initialState,
   reducers: {
     setFirstName: (state, action: PayloadAction<string>) => {
-      state.firstName = action.payload;
+      state.form.firstName = action.payload;
     },
     setLastName: (state, action: PayloadAction<string>) => {
-      state.lastName = action.payload;
+      state.form.lastName = action.payload;
     },
     setFatherName: (state, action: PayloadAction<string>) => {
-      state.fatherName = action.payload;
+      state.form.fatherName = action.payload;
     },
     setCitizenship: (state, action: PayloadAction<string>) => {
-      state.citizenship = action.payload;
+      state.form.citizenship = action.payload;
     },
     setTypeOfAttendence: (state, action: PayloadAction<string>) => {
-      state.typeOfAttendence = action.payload;
+      state.form.typeOfAttendence = action.payload;
     },
     setEducationalInstitution: (state, action: PayloadAction<string>) => {
-      state.educationalInstitution = action.payload;
+      state.form.educationalInstitution = action.payload;
     },
     setCountry: (state, action: PayloadAction<string>) => {
-      state.country = action.payload;
+      state.form.country = action.payload;
     },
     setCity: (state, action: PayloadAction<string>) => {
-      state.city = action.payload;
+      state.form.city = action.payload;
     },
     setPurpose: (state, action: PayloadAction<string>) => {
-      state.purpose = action.payload;
+      state.form.purpose = action.payload;
     },
     setResidence: (state, action: PayloadAction<string>) => {
-      state.residence = action.payload;
+      state.form.residence = action.payload;
     },
     setPhoneNumber: (state, action: PayloadAction<string>) => {
-      state.phoneNumber = action.payload;
+      state.form.phoneNumber = action.payload;
     },
     setEmail: (state, action: PayloadAction<string>) => {
-      state.email = action.payload;
+      state.form.email = action.payload;
     },
     setWhatsApp: (state, action: PayloadAction<string>) => {
-      state.whatsApp = action.payload;
+      state.form.whatsApp = action.payload;
     },
     setTelegram: (state, action: PayloadAction<string>) => {
-      state.telegram = action.payload;
+      state.form.telegram = action.payload;
     },
-    setFiles: (state, action: PayloadAction<any[]>) => {
-      state.files = action.payload;
+    setFiles: (state, action: PayloadAction<File>) => {
+      state.form.diploma = action.payload;
     },
   },
 });
 
-// Export action creators for each reducer
 export const {
   setFirstName,
   setLastName,
