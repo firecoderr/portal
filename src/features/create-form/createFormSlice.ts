@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-// Define the form state structure
 export interface FormState {
   firstName: string;
   lastName: string;
@@ -17,7 +16,7 @@ export interface FormState {
   email: string;
   whatsApp: string;
   telegram: string;
-  files: any[]; // Here will be files, can define the file type if needed
+  files: any[];
 }
 
 // Initialize the state with empty values
