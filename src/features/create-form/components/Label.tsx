@@ -6,7 +6,7 @@ const Label = React.memo(
     console.log("label: " + children);
 
     return (
-      <label {...props} className="text-xl">
+      <label {...props} className="text-base">
         {children}
         {required && <span className="text-red-500">*</span>}
       </label>
